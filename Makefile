@@ -58,15 +58,12 @@ ifeq ($(HTML_SRC_DIR),)
 $(error No HTML_SRC_DIR specified!)
 endif
 
-ifeq ($(HTML_SRCS),)
-$(error No HTML_SRCS specified!)
-endif
-
 ifeq ($(HTML_TEMPLATE),)
 $(error No HTML_TEMPLATE specified!)
 endif
 
 HTML_DEPS ?=
+HTML_SRCS := $(shell find $(HTML_SRC_DIR) -type f -name '*.md')
 HTML_OUTS := $(patsubst $(HTML_SRC_DIR)/%.md,$(SITE_DIR)/%,$(HTML_SRCS))
 WEBINATE  := $(WEBINATOR_DIR)/webinate.py
 
