@@ -10,13 +10,13 @@ from datetime import datetime
 
 def parse_markdown(path):
     with open(path, 'r') as f:
-        lines = [x.strip() for x in f.readlines()]
+        lines = [x.rstrip() for x in f.readlines()]
 
     # File starts with attribute lines which are of the form @key: value. Parse
     # these until we stop seeing them at which point we should be at the start
     # of the body content.
     attribs = {}
-    attrib_pattern = re.compile(r'^@(?P<key>[^:]+):(?P<value>.*)$')
+    attrib_pattern = re.compile(r'^\s*@(?P<key>[^:]+):(?P<value>.*)$')
 
     for i, line in enumerate(lines):
         if not (m := attrib_pattern.match(line)):
