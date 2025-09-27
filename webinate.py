@@ -38,6 +38,7 @@ def parse_markdown(path):
 
     # Add any autogenerate attributes.
     attribs['auto:generated'] = datetime.today().strftime('%Y-%m-%d %H:%M:%S')
+    attribs['auto:year'] = datetime.today().strftime('%Y')
 
     # Now parse the rest of the file as standard markdown.
     body = markdown.markdown(
