@@ -64,12 +64,12 @@ endif
 
 HTML_DEPS ?=
 HTML_SRCS := $(shell find $(HTML_SRC_DIR) -type f -name '*.md')
-HTML_OUTS := $(patsubst $(HTML_SRC_DIR)/%.md,$(SITE_DIR)/%,$(HTML_SRCS))
+HTML_OUTS := $(patsubst $(HTML_SRC_DIR)/%.md,$(SITE_DIR)/%.html,$(HTML_SRCS))
 WEBINATE  := $(WEBINATOR_DIR)/webinate.py
 
 webinate: $(HTML_OUTS) static
 
-$(SITE_DIR)/%: $(HTML_SRC_DIR)/%.md $(HTML_TEMPLATE) $(HTML_DEPS) $(VENV_READY)
+$(SITE_DIR)/%.html: $(HTML_SRC_DIR)/%.md $(HTML_TEMPLATE) $(HTML_DEPS) $(VENV_READY)
 	@mkdir -p $(@D)
 	. $(VENV_ACTIVATE) && $(PYTHON) $(WEBINATE) -o $@ -t $(HTML_TEMPLATE) $<
 

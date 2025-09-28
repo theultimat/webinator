@@ -59,11 +59,11 @@ Then running `make` will generate the following output
         ├── site
         │   ├── css
         │   │   └── test.css
-        │   └── test
+        │   └── test.html
         └── venv
 
 The `site` directory is the final static site and can be copied to the desired
-location. Note the `.html` suffix has been intentionally omitted!
+location.
 
 ## Markdown Syntax
 
