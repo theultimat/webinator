@@ -43,7 +43,7 @@ def parse_markdown(path):
     # Now parse the rest of the file as standard markdown.
     body = markdown.markdown(
         '\n'.join(lines[i:]),
-        extensions=['footnotes', 'fenced_code'],
+        extensions=['footnotes', 'fenced_code', 'tables'],
     )
 
     return attribs, body
